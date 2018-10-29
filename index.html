@@ -14,107 +14,107 @@ public class CRC {
 <br>
 <br>public static void main(String [] args)
 <br>{
-<br><br>
-<br><br>Scanner sc =new Scanner(System.in);
-<br><br>System.out.println("Enter the number of elements in dataword");
-<br><br>int data_size=sc.nextInt();
-<br><br>
-<br><br>dataword=new int[data_size];
-<br><br>System.out.println("Enter the dataword");
-<br><br>for(int i=0;i<data_size;i++)
-<br><br>{
-<br><br><br>dataword[i]=sc.nextInt();
-<br><br>}
-<br><br>
-<br><br>System.out.println("Enter the number of elements in divisor");
-<br><br>int div_size=sc.nextInt();
-<br><br>
-<br><br>divisor=new int[div_size];
-<br><br>System.out.println("Enter the divisor");
-<br><br>for(int i=0;i<div_size;i++)
-<br><br>{
-<br><br><br>divisor[i]=sc.nextInt();
-<br><br>}
-<br><br>
-<br><br>
-<br><br>int total_length=dataword.length +divisor.length-1;
-<br><br>codeword=new int[total_length];
-<br><br>remainder=new int[total_length];
-<br><br>crc=new int[total_length];
-<br><br>
-<br><br>for(int i=0;i<dataword.length;i++)
-<br><br>{
-<br><br><br>codeword[i]=dataword[i];
-<br><br><br>remainder[i]=dataword[i];
-<br><br>}
-<br><br>
-<br><br>//System.out.println(div);
-<br><br>//System.out.println(divisor);
-<br><br>//System.out.println(remainder);
-<br><br>
-<br><br>
-<br><br>remainder=divide(codeword,divisor,remainder);
-<br><br>
-<br><br>for(int i=0;i<remainder.length;i++)
-<br><br>{
-<br><br><br>crc[i]=remainder[i]^codeword[i];
-<br><br><br>
-<br><br>
-<br><br>}
+<br>
+<br>Scanner sc =new Scanner(System.in);
+<br>System.out.println("Enter the number of elements in dataword");
+<br>int data_size=sc.nextInt();
+<br>
+<br>dataword=new int[data_size];
+<br>System.out.println("Enter the dataword");
+<br>for(int i=0;i<data_size;i++)
+<br>{
+<br>dataword[i]=sc.nextInt();
+<br>}
+<br>
+<br>System.out.println("Enter the number of elements in divisor");
+<br>int div_size=sc.nextInt();
+<br>
+<br>divisor=new int[div_size];
+<br>System.out.println("Enter the divisor");
+<br>for(int i=0;i<div_size;i++)
+<br>{
+<br>divisor[i]=sc.nextInt();
+<br>}
+<br>
+<br>
+<br>int total_length=dataword.length +divisor.length-1;
+<br>codeword=new int[total_length];
+<br>remainder=new int[total_length];
+<br>crc=new int[total_length];
+<br>
+<br>for(int i=0;i<dataword.length;i++)
+<br>{
+<br>codeword[i]=dataword[i];
+<br>remainder[i]=dataword[i];
+<br>}
+<br>
+<br>//System.out.println(div);
+<br>//System.out.println(divisor);
+<br>//System.out.println(remainder);
+<br>
+<br>
+<br>remainder=divide(codeword,divisor,remainder);
+<br>
+<br>for(int i=0;i<remainder.length;i++)
+<br>{
+<br>crc[i]=remainder[i]^codeword[i];
+<br>
+<br>
+<br>}
 
-<br><br>for(int i=0;i<remainder.length;i++)
-<br><br><br>System.out.print(remainder[i]);
-<br><br>
-<br><br>System.out.println("The CRC code is");
-<br><br>for(int i=0;i<crc.length;i++)
-<br><br><br>System.out.print(crc[i]);
-<br><br>
-<br><br>
-<br><br>System.out.println("Enter the CRC code ");
-<br><br>for(int i=0;i<crc.length;i++)
-<br><br><br>crc[i]=sc.nextInt();
-<br><br>
-<br><br>for(int i=0;i<crc.length;i++)
-<br><br><br>remainder[i]=crc[i];
-<br><br>
-<br><br>remainder=divide(crc, divisor, remainder);
-<br><br>
-<br><br>int flag = 1;
-<br><br>for(int i=0;i<remainder.length;i++)
-<br><br>{
-<br><br><br>if(remainder[i]!=0)
-<br><br><br>{
-<br><br><br><br>System.out.println("Error detected");
-<br><br><br><br>flag = 0;
-<br><br><br><br>break;
-<br><br><br>}
-<br><br>}
-<br><br>if(flag == 1)
-<br><br>	System.out.println("No error detected");
-<br><br>
+<br>for(int i=0;i<remainder.length;i++)
+<br>System.out.print(remainder[i]);
+<br>
+<br>System.out.println("The CRC code is");
+<br>for(int i=0;i<crc.length;i++)
+<br>System.out.print(crc[i]);
+<br>
+<br>
+<br>System.out.println("Enter the CRC code ");
+<br>for(int i=0;i<crc.length;i++)
+<br>crc[i]=sc.nextInt();
+<br>
+<br>for(int i=0;i<crc.length;i++)
+<br>remainder[i]=crc[i];
+<br>
+<br>remainder=divide(crc, divisor, remainder);
+<br>
+<br>int flag = 1;
+<br>for(int i=0;i<remainder.length;i++)
+<br>{
+<br>if(remainder[i]!=0)
+<br>{
+<br>System.out.println("Error detected");
+<br>flag = 0;
+<br>break;
+<br>}
+<br>}
+<br>if(flag == 1)
+<br>	System.out.println("No error detected");
+<br>
 <br>}
 
 <br>private static int[] divide(int[] codeword, int[] divisor, int[] remainder) {
-<br><br>
-<br><br>int count=0;
-<br><br>
-<br><br>while(true)
-<br><br>{
-<br><br><br>for(int i=0;i<divisor.length;i++)
-<br><br><br>{
-<br><br><br><br>remainder[count+i]=remainder[count+i]^divisor[i];
-<br><br><br>}
-<br><br><br>
-<br><br><br>while(remainder[count]==0 && count!=remainder.length-1)
-<br><br><br>{
-<br><br><br><br>count++;
-<br><br><br>}
-<br><br><br>
-<br><br><br>if(((remainder.length)-count)<divisor.length)
-<br><br><br><br>break;
-<br><br>}
-<br><br>return remainder;
-<br><br>
+<br>
+<br>int count=0;
+<br>
+<br>while(true)
+<br>{
+<br>for(int i=0;i<divisor.length;i++)
+<br>{
+<br>remainder[count+i]=remainder[count+i]^divisor[i];
+<br>}
+<br>
+<br>while(remainder[count]==0 && count!=remainder.length-1)
+<br>{
+<br>count++;
+<br>}
+<br>
+<br>if(((remainder.length)-count)<divisor.length)
+<br>break;
+<br>}
+<br>return remainder;
+<br>
 <br>}
 }
 
